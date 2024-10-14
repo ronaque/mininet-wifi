@@ -177,13 +177,13 @@ function wifi_deps {
     if [ "$DIST" = "Fedora" -o "$DIST" = "RedHatEnterpriseServer" -o "$DIST" = "CentOS" ]; then
         $install gcc make socat psmisc xterm openssh-clients iperf libnl3-devel \
             iproute telnet python-setuptools libcgroup-tools openssl-devel \
-            ethtool help2man pyflakes pylint python-pep8 python-pexpect libevent-devel \
+            ethtool help2man pyflakes pylint python-pycodestyle python-pexpect libevent-devel \
             dbus-devel libconfig-devel epel-release ${PYPKG}-six
     elif [ "$DIST" = "SUSE LINUX"  ]; then
         $install gcc make socat psmisc xterm openssh iperf \
           iproute telnet ${PYPKG}-setuptools libcgroup-tools \
           ethtool help2man ${PYPKG}-pyflakes python3-pylint \
-                            python-pep8 ${PYPKG}-pexpect ${PYPKG}-tk
+                            python-pycodestyle ${PYPKG}-pexpect ${PYPKG}-tk
     else
         pf=pyflakes
         if [ $PYTHON_VERSION == 3 ]; then
@@ -195,7 +195,7 @@ function wifi_deps {
                 pf=pyflakes3
         fi
         $install gcc make socat psmisc xterm ssh iperf telnet \
-                 ethtool help2man $pf pylint pep8 \
+                 ethtool help2man $pf pylint pycodestyle \
                  net-tools \
                  ${PYPKG}-pexpect ${PYPKG}-tk
         # Install pip
